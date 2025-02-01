@@ -8,25 +8,19 @@ export default function ContactForm({ onAdd }) {
   const fieldId = useId();
 
   const initialValues = {
-    name: '',
-    number: '',   
+    text: '',
   };
-  const onlyLetters = /^[A-Za-zА-Яа-яЄєІіЇїҐґ-\s]+$/;
 
   const applySchema = Yup.object().shape({
-    name: Yup.string()
-      .required('Required')
+    text: Yup.string()
       .min(3, 'Too Short!')
-      .max(50, 'Too Long!')
-      .matches(onlyLetters, 'Only Letters')
+      .max(250, 'Too Long!')
       .trim(),
-    number: Yup.number()
-      .required('Required')
   });
-
+  
   const handleSubmit = (values, actions) => {
     onAdd({ id: nanoid(), ...values }, {actions});
-    actions.resetForm();
+    actions.resetForm();   
   };
 
   return (
@@ -38,29 +32,20 @@ export default function ContactForm({ onAdd }) {
     >{() => (
       <Form className={s.form}>
         <div className={s.formFields}>
-          <label htmlFor={`${fieldId}-name`}>Name</label>
+          <label htmlFor={`${fieldId}-text`}></label>
           <Field
             className={s.input}
             type="text"
-            name="name"
-            id={`${fieldId}-name`}
+            name="text"
+            id={`${fieldId}-text`}
+            autoFocus
+            placeholder="What do you want to write?"
           />
-          <ErrorMessage className={s.error} name="name" component="div" />
-        </div>
-
-        <div className={s.formFields}>
-          <label htmlFor={`${fieldId}-number`}>Number</label>
-          <Field
-            className={s.input}
-            type="tel"
-            name="number"
-            id={`${fieldId}-number`}
-          />
-          <ErrorMessage className={s.error} name="number" component="div" />
+          <ErrorMessage className={s.error} name="text" component="div" />
         </div>
           <button className={s.btnAdd} type="submit">
-          Add contact
-        </button>
+            Add 
+          </button>
       </Form>
     )}
     </Formik>

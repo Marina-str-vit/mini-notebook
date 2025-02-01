@@ -1,20 +1,20 @@
 import { useState, useEffect } from "react";
 import ContactForm from "./components/ContactForm/ContactForm";
 import ContactList from "./components/ContactList/ContactLisct";
-import SearchBox from "./components/SearchBox/SearchBox";
+// import SearchBox from "./components/SearchBox/SearchBox";
 import "./App.css";
-import defaultContacts from "./assets/defaultContacts.json";
+import defaultTodoList from "./assets/defaultTodoList.json";
 
 export default function App() {
   const [contacts, setContacts] = useState(() => {
-    const savedContacts = localStorage.getItem("saved-contacts");
+    const savedContacts = localStorage.getItem("saved-todo");
     if (savedContacts !== null) {
       return JSON.parse(savedContacts);
 		}
-    return defaultContacts;
+    return defaultTodoList;
   });
 
-  const [filter, setFilter] = useState("");
+  // const [filter, setFilter] = useState("");
 
   const addContact = (newUser) => {
     setContacts((prevContacts) => {
@@ -23,7 +23,7 @@ export default function App() {
   };
 
   useEffect(() => {
-    localStorage.setItem("saved-contacts", JSON.stringify(contacts));
+    localStorage.setItem("saved-todo", JSON.stringify(contacts));
   }, [contacts]);
 
   const deleteUser = (contactId) => {
@@ -32,17 +32,16 @@ export default function App() {
     });
   };
 
-  const visibleContacts = contacts.filter((userContact) =>
-    userContact.name.toLowerCase().includes(filter.toLowerCase())
-  );
+  // const visibleContacts = contacts.filter((userContact) =>
+  //   userContact.text.toLowerCase().includes(filter.toLowerCase())
+  // );
 
 
   return (
     <div>
-      <h1>Phonebook</h1>
+      <h1>Notebook</h1>
       <ContactForm onAdd={addContact} />
-      <SearchBox value={filter} onFilter={setFilter} />
-      <ContactList contacts={visibleContacts} onDelete={deleteUser} />
+      <ContactList contacts={contacts} onDelete={deleteUser} />
     </div>
   );
 }
