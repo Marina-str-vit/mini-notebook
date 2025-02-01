@@ -14,11 +14,13 @@ export default function ContactForm({ onAdd }) {
   const applySchema = Yup.object().shape({
     text: Yup.string()
       .min(3, 'Too Short!')
-      .max(250, 'Too Long!')
-      .trim(),
+      .max(250, 'Too Long!'),
   });
   
   const handleSubmit = (values, actions) => {
+    if (!values.text.trim()) {
+      return;
+    }
     onAdd({ id: nanoid(), ...values }, {actions});
     actions.resetForm();   
   };
