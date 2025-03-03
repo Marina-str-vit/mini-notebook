@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
-import ContactForm from "./components/ContactForm/ContactForm";
-import ContactList from "./components/ContactList/ContactLisct";
-// import SearchBox from "./components/SearchBox/SearchBox";
 import "./App.css";
 import defaultTodoList from "./assets/defaultTodoList.json";
+import TodoForm from "./components/TodoForm/TodoForm";
+import TodoList from "./components/TodoList/TodoLisct";
+import { nanoid } from "nanoid";
 
 export default function App() {
-  const [contacts, setContacts] = useState(() => {
+  const [todos, setTodos] = useState(() => {
     const savedContacts = localStorage.getItem("saved-todo");
     if (savedContacts !== null) {
       return JSON.parse(savedContacts);
@@ -14,34 +14,31 @@ export default function App() {
     return defaultTodoList;
   });
 
-  // const [filter, setFilter] = useState("");
 
-  const addContact = (newUser) => {
-    setContacts((prevContacts) => {
-      return [...prevContacts, newUser];
+  const addTodo = (newTodo) => {
+    setTodos((prevTodos) => {
+      return [...prevTodos, newTodo];
     });
   };
 
   useEffect(() => {
-    localStorage.setItem("saved-todo", JSON.stringify(contacts));
-  }, [contacts]);
+    localStorage.setItem("saved-todo", JSON.stringify(todos));
+  }, [todos]);
 
-  const deleteUser = (contactId) => {
-    setContacts((prevContacts) => {
-      return prevContacts.filter((contact) => contact.id !== contactId);
+  const deleteUser = (todoId) => {
+    setTodos((prevTodos) => {
+      return prevTodos.filter((todo) => todo.id !== todoId);
     });
   };
 
-  // const visibleContacts = contacts.filter((userContact) =>
-  //   userContact.text.toLowerCase().includes(filter.toLowerCase())
-  // );
+
 
 
   return (
     <div>
       <h1>Notebook</h1>
-      <ContactForm onAdd={addContact} />
-      <ContactList contacts={contacts} onDelete={deleteUser} />
+      <TodoForm onAdd={addTodo} />
+      <TodoList todos={todos} onDelete={deleteUser} />
     </div>
   );
 }

@@ -1,10 +1,10 @@
-import s from "./ContactForm.module.css";
+import s from "./TodoForm.module.css";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { useId } from "react";
 import { nanoid } from "nanoid";
 
-export default function ContactForm({ onAdd }) {
+export default function TodoForm({ onAdd }) {
   const fieldId = useId();
 
   const initialValues = {
@@ -46,7 +46,7 @@ export default function ContactForm({ onAdd }) {
           <ErrorMessage className={s.error} name="text" component="div" />
         </div>
           <button className={s.btnAdd} type="submit">
-            Add 
+            Add todo
           </button>
       </Form>
     )}

@@ -5,7 +5,7 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-color: #02087a;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -23,18 +23,18 @@ a:hover {
 }
 
 body {
-  margin: 0;
+  margin: 40px 0 0 0;
+  padding: 0;
   display: flex;
   place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
   font-size: 20px;
   color: black;
 }
 
 h1 {
-  font-size: 40px;
+  font-size: 45px;
   line-height: 1.1;
+  text-shadow: 2px 2px #d839c0;
 }
 
 ul li,
@@ -57,7 +57,7 @@ input {
   min-width: 320px;
   max-width: 375px;
   width: 100%;
-  margin: 0 auto;
+  margin-top: 40px;
 }
 
 
@@ -76,6 +76,20 @@ input {
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
-    background-color: #ffffff;
+    /* background-color: #fadb98; */
+    background-image: url(/src/image/home.png);
+    /* background-position: center center; */
+    background-repeat: no-repeat;
+    /* background-size: cover; */
+    position: relative;
+    /* display: flex;
+    justify-content: center; */
+    background-position: center;
+
+    /* background-size: cover; */
+
+    min-height: 750px;
+
+    min-width: 400px;
   }
 }

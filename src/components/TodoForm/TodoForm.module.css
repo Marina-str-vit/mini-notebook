@@ -1,5 +1,8 @@
+/* .formWrapper{
+  margin-top: 40px;
+} */
 .form {
-  width: 1000px;
+  /* width: 1000px; */
   border: none;
   margin: 0 auto;
 	/* margin-left: 50px;
@@ -11,7 +14,7 @@
 }
 
 .formFields {
-  width: 1000px;
+  /* width: 1000px; */
   padding: 20px;
   display: flex;
   justify-content: center;
@@ -32,14 +35,16 @@
 	margin: 20px auto;
 	padding: 8px 15px;
   border-radius: 6px;
+  /* border: 3px; */
+  font-weight: bold;
   border-color: aquamarine;
   color: rgb(246, 244, 150);
-	background-color: rgb(5, 164, 101);
+	background-color: rgb(9, 124, 169);
   transition: width 2s, height 2s, transform 2s;
 }
 .btnAdd:hover, .btnAdd:focus {
-	color: white;
-	background-color: rgb(11, 159, 6);
+	color: rgb(12, 69, 77);  
+	background-color: rgb(62, 247, 173);
 } 
 
 .error {
